@@ -2,7 +2,8 @@
 
 ; Define your application name
 !define APPNAME "Конвертер тестов из АСТ-Тест в MoodleXML"
-!define APPNAMEANDVERSION "Конвертер тестов из АСТ-Тест в MoodleXML (20170307)"
+!define APPVERSION "20221101-MIVLGU"
+!define APPNAMEANDVERSION "Конвертер тестов из АСТ-Тест в MoodleXML (${APPVERSION})"
 
 ; Main Install settings
 Name "${APPNAMEANDVERSION}"
@@ -34,7 +35,10 @@ Section -FinishSection
 
 	WriteRegStr HKCU "Software\${APPNAME}" "" "$INSTDIR"
 	WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
+	WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${APPVERSION}"
 	WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$INSTDIR\uninstall.exe"
+	WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify" 1
+	WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1
 	WriteUninstaller "$INSTDIR\uninstall.exe"
 
 SectionEnd
